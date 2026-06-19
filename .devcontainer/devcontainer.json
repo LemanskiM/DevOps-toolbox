@@ -27,7 +27,9 @@
     ],
     
     // Pobranie czystego aliasu bezpośrednio przez curl (brak problemów z cudzysłowami w JSON)
-    "postCreateCommand": "cat << 'EOF' >> /home/ML/.bashrc\nalias clip=\"base64 | tr -d '\\n' | awk '{print \\\"\\033]52;c;\\\" \\$0 \\\"\\007\\\"}'\"\nEOF",
+"postCreateCommand": "cat << 'EOF' >> /home/ML/.bashrc\nalias clip=\"base64 | tr -d '\\n' | awk '{print \\\"\\033]52;c;\\\" \\$0 \\\"\\007\\\"}'\"\nalias tfgraph='terraform graph | dot -Tpng > graph.png'\nEOF",
+
+
 
     // Twój użytkownik zdefiniowany w Dockerfile
     "remoteUser": "ML"

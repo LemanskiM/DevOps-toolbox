@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y \
     gnupg \
     lsb-release \
     xclip \
+    tree\
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # 1. Terraform
@@ -57,6 +58,13 @@ RUN curl -LO https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_
 RUN curl -sSL -o argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64 \
     && chmod +x argocd \
     && mv argocd /usr/local/bin/
+    
+# 7. Graphviz
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    graphviz \
+    graphviz-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 
 # Create a non-root user 'vscode' for safe development inside the container
 RUN useradd -m vscode -s /bin/bash \
